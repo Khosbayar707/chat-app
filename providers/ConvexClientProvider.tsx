@@ -8,7 +8,7 @@ import {
   Unauthenticated,
   ConvexReactClient,
 } from "convex/react";
-import LoadingLogo from "@/components/shape/LoadingLogo";
+import LoadingLogo from "@/components/shared/LoadingLogo";
 
 type Props = { children: React.ReactNode };
 

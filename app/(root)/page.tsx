@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import LoadingLogo from "@/components/shape/LoadingLogo";
+import LoadingLogo from "@/components/shared/LoadingLogo";
 import { UserButton, useUser } from "@clerk/nextjs";
 
 export default function Home() {
