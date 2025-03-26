@@ -1,6 +1,5 @@
 "use client";
 
-import { useNavigation } from "@/app/hooks/useNavigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -9,8 +8,28 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { UserButton } from "@clerk/nextjs";
-
 import Link from "next/link";
+import { Users, MessageSquare } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+const useNavigation = () => {
+  const pathname = usePathname();
+
+  return [
+    {
+      name: "Friends",
+      href: "/friends",
+      icon: <Users className="h-5 w-5" />,
+      active: pathname === "/friends",
+    },
+    {
+      name: "Conversation",
+      href: "/conversation",
+      icon: <MessageSquare className="h-5 w-5" />,
+      active: pathname === "/conversation",
+    },
+  ];
+};
 
 const MobileNav = () => {
   const paths = useNavigation();
@@ -28,7 +47,7 @@ const MobileNav = () => {
                     <TooltipTrigger>
                       <Button
                         size="icon"
-                        variant={path.active ? "default" : "outline"}
+                        variant={path.active ? "outline" : "default"}
                       >
                         {path.icon}
                       </Button>
