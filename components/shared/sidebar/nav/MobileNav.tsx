@@ -12,14 +12,14 @@ import { UserButton } from "@clerk/nextjs";
 
 import Link from "next/link";
 
-const DesktopNav = () => {
+const MobileNav = () => {
   const paths = useNavigation();
   const safePaths = Array.isArray(paths) ? paths : [];
 
   return (
-    <Card className="hidden lg:flex lg:flex-col lg:justify-between lg:items-center lg:h-full lg:w-16 lg:px-2 lg:py-4 text-white">
-      <nav>
-        <ul className="flex flex-col items-center gap-4">
+    <Card className="fixed bottom-4 w-[calc(100vw-32px)] flex items-center h-16 p-2 lg:hidden">
+      <nav className="w-full">
+        <ul className="flex justify-evenly items-center">
           {safePaths.length > 0 ? (
             safePaths.map((path, id) => (
               <li key={id} className="relative">
@@ -43,13 +43,13 @@ const DesktopNav = () => {
           ) : (
             <p>Loading...</p>
           )}
+          <li className="flex flex-col items-center gap-4">
+            <UserButton />
+          </li>
         </ul>
       </nav>
-      <div className="flex flex-col items-center gap-4">
-        <UserButton />
-      </div>
     </Card>
   );
 };
 
-export default DesktopNav;
+export default MobileNav;
