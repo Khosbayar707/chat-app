@@ -11,6 +11,7 @@ import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { Users, MessageSquare } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useConversation } from "@/app/hooks/useConversation";
 
 const useNavigation = () => {
   const pathname = usePathname();
@@ -34,7 +35,8 @@ const useNavigation = () => {
 const MobileNav = () => {
   const paths = useNavigation();
   const safePaths = Array.isArray(paths) ? paths : [];
-
+  const { isActive } = useConversation();
+  if (isActive) return null;
   return (
     <Card className="fixed bottom-4 w-[calc(100vw-32px)] flex items-center h-16 p-2 lg:hidden">
       <nav className="w-full">
