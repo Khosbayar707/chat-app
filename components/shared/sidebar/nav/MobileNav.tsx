@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Users, MessageSquare } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useConversation } from "@/app/hooks/useConversation";
+import { ModeToggle } from "@/components/ui/themes/theme-toggle";
 
 const useNavigation = () => {
   const pathname = usePathname();
@@ -64,6 +65,9 @@ const MobileNav = () => {
           ) : (
             <p>Loading...</p>
           )}
+          <li>
+            <ModeToggle />
+          </li>
           <li className="flex flex-col items-center gap-4">
             <UserButton />
           </li>
