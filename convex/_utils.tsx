@@ -7,5 +7,8 @@ export const getUserByClierkId = async ({
   ctx: QueryCtx | MutationCtx;
   clerkId: string;
 }) => {
-  return await ctx.db.query("users").withIndex("by_clerkId", (q) => q);
+  return await ctx.db
+    .query("users")
+    .withIndex("by_clerkId", (q) => q.eq("clerkId", clerkId))
+    .unique();
 };
